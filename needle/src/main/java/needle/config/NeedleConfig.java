@@ -1,6 +1,7 @@
 package needle.config;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 import io.smallrye.config.ConfigMapping;
 import io.smallrye.config.WithDefault;
@@ -10,6 +11,10 @@ public interface NeedleConfig {
      @WithDefault(".")
      Path basePath();
 
-     VersionConfig version();
-    
+     Optional<String> pathSelector();
+
+     @WithDefault("deploy")
+     String goal();
+
+     VersionConfig version();    
 }

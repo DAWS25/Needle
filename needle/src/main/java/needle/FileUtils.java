@@ -11,16 +11,15 @@ public class FileUtils {
     */
     static String indicatorOfPath(Path path) {
         var result = new StringBuilder();
-        if (path.toFile().isDirectory()) {
-            result.append("📁");
-        } else if (path.toFile().isFile()) {
-            result.append("📄");
-        } else {
-            result.append("❓");
-        }
-        
         if (path.toFile().exists()) {
             result.append("✅");
+            if (path.toFile().isDirectory()) {
+                result.append("📁");
+            } else if (path.toFile().isFile()) {
+                result.append("📄");
+            } else {
+                result.append("❓");
+            }
         } else {
             result.append("❌");
         }

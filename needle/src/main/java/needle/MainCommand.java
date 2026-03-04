@@ -16,6 +16,9 @@ public class MainCommand implements Runnable {
     @Inject
     NeedleConfig config;
 
+    @Inject
+    Execution execution;
+
     @Override
     public void run() {
         var version = config.version();
@@ -25,8 +28,9 @@ public class MainCommand implements Runnable {
         var basePath = config.basePath();
         var resolvedPath  = cwdPath.resolve(basePath);
         var pathIndicator = FileUtils.indicatorOfPath(resolvedPath);
-        log().infof("Needle version[%s] started", versionStr);
-        log().debugf("  Load Time: %s", Main.START_TIME.toString());
+        var goal = config.goal();
+        log().infof("Needle version[%s] started goal[%s]", versionStr, goal);
+        log().debugf("  Load Time: %s", execution.START_TIME.toString());
         log().debugf("  Working Dir: %s", cwd);
         log().infof("Path: cwd[%s] path[%s %s]", cwd,resolvedPath, pathIndicator);
     }

@@ -12,7 +12,6 @@ import picocli.CommandLine;
 
 @QuarkusMain
 public class Main implements QuarkusApplication {
-    public static final LocalDateTime START_TIME = LocalDateTime.now();
 
     @Inject
     CommandLine.IFactory factory;
